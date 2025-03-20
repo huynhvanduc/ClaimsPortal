@@ -13,39 +13,6 @@
 - **Loading Animation:** Shows a smooth loading animation during requests (loading list, searching, adding claims).
 - **Custom Toast Component:** Notifications are displayed as toasts (toastr) for success or error messages.
 
-## Directory Structure
-CLAIMPORTAL/
-├── .vscode/
-├── public/
-│   ├── assets/
-│   │   ├── css/
-│   │   │   ├── loading.css
-│   │   │   ├── style.css
-│   │   │   └── toast.css
-│   │   └── js/
-│   │       ├── addClaim.js
-│   │       ├── claimList.js
-│   │       ├── loading.js
-│   │       └── toast.js
-│   ├── .htaccess
-│   └── index.php
-├── src/
-│   ├── Config/
-│   │   └── Database.php
-│   ├── Controllers/
-│   │   └── ClaimController.php
-│   ├── Models/
-│   │   └── Claim.php
-│   └── Views/
-│       └── templates/
-│           ├── add_claim.php
-│           ├── claim_list.php
-│           ├── footer.php
-│           ├── header.php
-│           ├── loading.php
-│           └── toast.php
-├── README.md
-└── database.sql 
 
 ## System Requirements
 
