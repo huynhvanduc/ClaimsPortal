@@ -45,7 +45,7 @@ CLAIMPORTAL/
 │           ├── loading.php
 │           └── toast.php
 ├── README.md
-└── database.sql
+└── database.sql 
 
 ## System Requirements
 
