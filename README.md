@@ -13,7 +13,6 @@
 - **Loading Animation:** Shows a smooth loading animation during requests (loading list, searching, adding claims).
 - **Custom Toast Component:** Notifications are displayed as toasts (toastr) for success or error messages.
 
-
 ## System Requirements
 
 - PHP 7.4 or higher
@@ -24,74 +23,138 @@
 ## Installation
 
 ### 1. Clone the Repository
-Clone the project to your local machine:
-
 ```bash
 git clone <repository-url>
-cd CLAIMPORTAL
+cd ClaimPortal
+```
+
+## Project Structure
+
+ClaimPortal/
+├── public/
+│   ├── assets/
+│   │   ├── css/
+│   │   │   ├── loading.css
+│   │   │   ├── style.css
+│   │   │   └── toast.css
+│   │   └── js/
+│   │       ├── addClaim.js
+│   │       ├── claimList.js
+│   │       ├── loading.js
+│   │       └── toast.js
+│   ├── .htaccess
+│   └── index.php
+└── src/
+    ├── Config/
+    │   └── Database.php
+    ├── Controllers/
+    │   └── ClaimController.php
+    ├── Models/
+    │   └── Claim.php
+    └── Views/
+        └── templates/
+            ├── add_claim.php
+            ├── claim_list.php
+            ├── footer.php
+            ├── header.php
+            ├── loading.php
+            └── toast.php
 
 ### 2. Configure the Database
 Create a MySQL database:
-sql
-CREATE DATABASE claim_portal;
-USE claim_portal;
+```sql
+CREATE DATABASE claim_portal CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 CREATE TABLE claims (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    JobID VARCHAR(50) NOT NULL,
-    InsuranceClaimNo VARCHAR(50) NOT NULL,
-    VehicleRego VARCHAR(50) NOT NULL,
-    Owner VARCHAR(100) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    JobID VARCHAR(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+    InsuranceClaimNo VARCHAR(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+    VehicleRego VARCHAR(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+    Owner VARCHAR(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 );
-Update the database connection details in src/Config/Database.php:
-php
-$this->pdo = new \PDO("mysql:host=localhost;dbname=your_db", "your_username", "your_password");
+```
+
+Update database configuration in `src/Config/Database.php`:
+```php
+private $host = 'localhost';
+private $dbname = 'claim_portal';
+private $username = 'your_username';
+private $password = 'your_password';
+```
 
 ### 3. Configure BASE_URL
-Open the public/index.php file and update the BASE_URL according to your domain:
-
-php
+Update in `public/index.php`:
+```php
 define('BASE_URL', '/claim-portal'); // Adjust if necessary
+```
 
-### 4. Set Up the Server
-Place the CLAIMPORTAL directory in your web server's root directory (e.g., /var/www/html for Apache).
-Ensure the server supports PHP and MySQL.
+### 4. Server Setup
+- Place project in web server root directory (e.g., `C:\xampp\htdocs` for XAMPP)
+- Enable mod_rewrite for Apache
+- Set proper permissions for files and directories
+- Ensure PHP and MySQL services are running
 
-### 5. Access the Application
-Open your browser and navigate to:
+### 5. Import Sample Data
+Run the following SQL commands to import sample data:
+```sql
+INSERT INTO claims (JobID, InsuranceClaimNo, VehicleRego, Owner) VALUES
+('JOB001', 'IC98765', 'ABC123', 'John Smith'),
+('JOB002', 'IC45678', 'XYZ789', 'Emma Watson'),
+('JOB003', 'IC34567', 'DEF456', 'Michael Johnson');
+```
 
-text
-http://your-domain/claim-portal
-Usage
+### 6. Access Application
+Visit: `http://localhost/claim-portal`
 
-####1. View Claims List
-Upon accessing the page, the full list of claims is loaded automatically.
-A loading animation is displayed during the loading process.
+### 7. Troubleshooting
+- Ensure all database credentials are correct
+- Check Apache error logs if the page doesn't load
+- Verify PHP version compatibility
+- Make sure all required PHP extensions are enabled
+- Check file permissions if running on Linux/Unix systems
 
-####2. Search Claims
-Enter a keyword in the search field (Job ID, Insurance Claim No, Vehicle Rego, or Owner).
-Results are displayed after a 500ms delay.
-Clear the search field to display the full list of claims.
+## Usage Guide
 
-####3. Add a New Claim
-Fill in the "Add New Claim" form (Job ID, Insurance Claim No, Vehicle Rego, Owner).
-Click the "Add Claim" button:
-If validation fails (e.g., fields are empty), an error toast (red) will be displayed.
-If validation succeeds, the request is sent, a loading animation is shown, and a success toast (green) will be displayed.
-The claims list is updated automatically, and the form is cleared.
-Customization
+### View Claims List
+- Access main page to view all claims
+- Claims displayed in responsive table format
+- Loading animation indicates data fetching
 
-####1. Loading Animation
-Files: assets/css/loading.css and assets/js/loading.js.
-Customize the loading appearance (color, spinner size) in loading.css.
-Adjust the minimum display duration in addClaim.js and claimList.js (currently set to 500ms).
+### Search Claims
+- Type in search box to filter claims
+- Results update after 500ms delay
+- Search across all fields (Job ID, Insurance Claim No, Vehicle Rego, Owner)
+- Clear search to view all claims
 
-####2. Toast Component
-Files: assets/css/toast.css and assets/js/toast.js.
-Customize the toast appearance (color, position, display duration) in toast.css and toast.js.
-Example: Change the toast display duration:
-javascript
-window.showToast = function(message, type = 'success', duration = 5000) { // Change 3000 to 5000
-    // ...
-};
+### Add New Claim
+1. Fill required fields:
+   - Job ID (format: JOBxxx)
+   - Insurance Claim No (format: ICxxxxx)
+   - Vehicle Rego
+   - Owner
+2. Submit form
+3. Receive instant feedback via toast notifications
+
+## Customization
+
+### Loading Animation
+- Modify `assets/css/loading.css` for appearance
+- Adjust timing in `assets/js/loading.js`
+- Default delay: 500ms
+
+### Toast Notifications
+- Customize in `assets/css/toast.css`
+- Configure duration in `assets/js/toast.js`
+- Default display: 5000ms
+
+## Security Features
+
+- Input validation and sanitization
+- XSS protection
+- SQL injection prevention
+- Error handling and logging
+
+## Browser Support
+
+- Chrome (latest)
+- Edge (latest)

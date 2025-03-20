@@ -9,8 +9,23 @@ CREATE TABLE claims (
 );
 
 INSERT INTO claims (JobID, InsuranceClaimNo, VehicleRego, Owner) VALUES
-('001', 'IC12345', '29A-12345', 'Nguyễn Văn A'),
-('002', 'IC12346', '51B-45678', 'Trần Thị B'),
-('003', 'IC12347', '51C-78901', 'Lê Văn C'),
-('004', 'IC12348', '30A-11111', 'Phạm Thị D'),
-('005', 'IC12349', '29B-22222', 'Hoàng Văn E');
+('JOB001', 'IC98765', 'ABC123', 'John Smith'),
+('JOB002', 'IC45678', 'XYZ789', 'Emma Watson'),
+('JOB003', 'IC34567', 'DEF456', 'Michael Johnson'),
+('JOB004', 'IC23456', 'GHI789', 'Sarah Williams'),
+('JOB005', 'IC12345', 'JKL012', 'David Brown'),
+('JOB006', 'IC87654', 'MNO345', 'Maria Garcia'),
+('JOB007', 'IC76543', 'PQR678', 'James Wilson'),
+('JOB008', 'IC65432', 'STU901', 'Lisa Anderson'),
+('JOB009', 'IC54321', 'VWX234', 'Robert Taylor'),
+('JOB010', 'IC43210', 'YZA567', 'Jennifer Martinez'),
+('JOB011', 'IC32109', 'BCD890', 'William Davis'),
+('JOB012', 'IC21098', 'EFG123', 'Elizabeth Thompson'),
+('JOB013', 'IC10987', 'HIJ456', 'Christopher Lee'),
+('JOB014', 'IC09876', 'KLM789', 'Jessica White'),
+('JOB015', 'IC89765', 'NOP012', 'Daniel Clark'),
+('JOB016', 'IC78654', 'QRS345', 'Sophie Turner'),
+('JOB017', 'IC67543', 'TUV678', 'Andrew Miller'),
+('JOB018', 'IC56432', 'WXY901', 'Rachel Green'),
+('JOB019', 'IC45321', 'ZAB234', 'Thomas Moore'),
+('JOB020', 'IC34210', 'CDE567', 'Emily Parker');
