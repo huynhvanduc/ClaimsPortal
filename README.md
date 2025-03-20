@@ -62,7 +62,7 @@ Clone the project to your local machine:
 ```bash
 git clone <repository-url>
 cd CLAIMPORTAL
-2. Configure the Database
+### 2. Configure the Database
 Create a MySQL database:
 sql
 CREATE DATABASE claim_portal;
@@ -79,39 +79,39 @@ CREATE TABLE claims (
 Update the database connection details in src/Config/Database.php:
 php
 $this->pdo = new \PDO("mysql:host=localhost;dbname=your_db", "your_username", "your_password");
-3. Configure BASE_URL
+### 3. Configure BASE_URL
 Open the public/index.php file and update the BASE_URL according to your domain:
 
 php
 define('BASE_URL', '/claim-portal'); // Adjust if necessary
-4. Set Up the Server
+### 4. Set Up the Server
 Place the CLAIMPORTAL directory in your web server's root directory (e.g., /var/www/html for Apache).
 Ensure the server supports PHP and MySQL.
-5. Access the Application
+### 5. Access the Application
 Open your browser and navigate to:
 
 text
 http://your-domain/claim-portal
 Usage
-1. View Claims List
+####1. View Claims List
 Upon accessing the page, the full list of claims is loaded automatically.
 A loading animation is displayed during the loading process.
-2. Search Claims
+####2. Search Claims
 Enter a keyword in the search field (Job ID, Insurance Claim No, Vehicle Rego, or Owner).
 Results are displayed after a 500ms delay.
 Clear the search field to display the full list of claims.
-3. Add a New Claim
+####3. Add a New Claim
 Fill in the "Add New Claim" form (Job ID, Insurance Claim No, Vehicle Rego, Owner).
 Click the "Add Claim" button:
 If validation fails (e.g., fields are empty), an error toast (red) will be displayed.
 If validation succeeds, the request is sent, a loading animation is shown, and a success toast (green) will be displayed.
 The claims list is updated automatically, and the form is cleared.
 Customization
-1. Loading Animation
+####1. Loading Animation
 Files: assets/css/loading.css and assets/js/loading.js.
 Customize the loading appearance (color, spinner size) in loading.css.
 Adjust the minimum display duration in addClaim.js and claimList.js (currently set to 500ms).
-2. Toast Component
+####2. Toast Component
 Files: assets/css/toast.css and assets/js/toast.js.
 Customize the toast appearance (color, position, display duration) in toast.css and toast.js.
 Example: Change the toast display duration:
