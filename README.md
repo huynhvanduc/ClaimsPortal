@@ -28,38 +28,6 @@ git clone <repository-url>
 cd ClaimPortal
 ```
 
-## Project Structure
-
-ClaimPortal/
-├── public/
-│   ├── assets/
-│   │   ├── css/
-│   │   │   ├── loading.css
-│   │   │   ├── style.css
-│   │   │   └── toast.css
-│   │   └── js/
-│   │       ├── addClaim.js
-│   │       ├── claimList.js
-│   │       ├── loading.js
-│   │       └── toast.js
-│   ├── .htaccess
-│   └── index.php
-└── src/
-    ├── Config/
-    │   └── Database.php
-    ├── Controllers/
-    │   └── ClaimController.php
-    ├── Models/
-    │   └── Claim.php
-    └── Views/
-        └── templates/
-            ├── add_claim.php
-            ├── claim_list.php
-            ├── footer.php
-            ├── header.php
-            ├── loading.php
-            └── toast.php
-
 ### 2. Configure the Database
 Create a MySQL database:
 ```sql
